@@ -134,15 +134,19 @@ groupgen/
 │       │   ├── Components/
 │       │   │   ├── Chat/
 │       │   │   │   ├── ChatBox.js        # Chat interface and message handling
-│       │   │   │   └── Members.js        # Member management component
+│       │   │   │   └── Members.js        # Member management and selection
 │       │   │   ├── LLM/                  # Language model integrations
-│       │   │   ├── CardComponent.js      # Chat card UI component
+│       │   │   │   └── openAI.js         # OpenAI integration
+│       │   │   ├── CardComponent.js      # Chat information card
 │       │   │   ├── HomeGrid.js           # Home page grid layout
 │       │   │   ├── MembersGrid.js        # Members management grid
 │       │   │   └── NavBar.js             # Navigation component
 │       │   ├── Pages/
 │       │   │   ├── LandingPage.jsx       # Landing/welcome page
-│       │   │   └── Chat.jsx              # Main chat page
+│       │   │   ├── Chat.jsx              # Main chat page
+│       │   │   ├── Home.jsx              # Home dashboard page
+│       │   │   ├── MembersPage.jsx       # Member management page
+│       │   │   └── SettingsPage.jsx      # User settings page
 │       │   ├── App.js                    # Main application component
 │       │   ├── App.css                   # Global styles
 │       │   ├── index.js                  # Application entry point
