@@ -129,33 +129,40 @@ groupgen/
 │       ├── public/
 │       │   ├── index.html
 │       │   ├── manifest.json
-│       │   └── ...
+│       │   └── assets/
 │       ├── src/
 │       │   ├── Components/
 │       │   │   ├── Chat/
-│       │   │   ├── LLM/
-│       │   │   └── ...
+│       │   │   │   ├── ChatBox.js        # Chat interface and message handling
+│       │   │   │   └── Members.js        # Member management component
+│       │   │   ├── LLM/                  # Language model integrations
+│       │   │   ├── CardComponent.js      # Chat card UI component
+│       │   │   ├── HomeGrid.js           # Home page grid layout
+│       │   │   ├── MembersGrid.js        # Members management grid
+│       │   │   └── NavBar.js             # Navigation component
 │       │   ├── Pages/
-│       │   │   ├── LandingPage.jsx
-│       │   │   └── ...
-│       │   ├── App.js
-│       │   ├── App.css
-│       │   ├── index.js
-│       │   └── ...
-│       ├── package.json
-│       └── ...
+│       │   │   ├── LandingPage.jsx       # Landing/welcome page
+│       │   │   └── Chat.jsx              # Main chat page
+│       │   ├── App.js                    # Main application component
+│       │   ├── App.css                   # Global styles
+│       │   ├── index.js                  # Application entry point
+│       │   └── setupTests.js             # Test configuration
+│       ├── package.json                  # Frontend dependencies
+│       ├── app.yaml                      # GCP App Engine config
+│       └── README.md                     # Frontend documentation
 ├── nodejsAi/
-│   ├── server.js
-│   ├── package.json
-│   ├── app.yaml
-│   └── ...
+│   ├── server.js                         # Backend server
+│   ├── package.json                      # Backend dependencies
+│   └── app.yaml                          # Backend GCP config
 ├── functions/
-│   ├── index.js
-│   ├── package.json
-│   └── ...
-├── .gitignore
-├── README.md
-└── ...
+│   ├── index.js                          # Firebase Cloud Functions
+│   └── package.json                      # Functions dependencies
+├── firebase/
+│   ├── firestore.rules                   # Database security rules
+│   └── storage.rules                     # Storage security rules
+├── .firebaserc                           # Firebase project config
+├── .gitignore                            # Git ignore rules
+└── README.md                             # Project documentation
 ```
 
 ### Key Directories and Files
