@@ -1,0 +1,51 @@
+firebase database (specific to individual users):
+    brackets denote variables
+    /users
+        /[uid]
+            /userInfo
+                /info
+                    {defaultMemberId}
+            /chats
+                /[chatID]
+                    {chatName,createdAt,imageStyle,usersMember,lastOpened}
+                    /members
+                        /[memberID]
+                    /messages
+                        /[messageID]
+                            {key,message,messageType,time,user}
+                            {key,imageUrl,description,messageType,time}
+                
+
+    /members
+        /[memberID]
+            {avatarUrl,name,personality}
+
+firebase storage (general):
+    /members
+        a list of all member profile pictures, named by memberID in jpg format
+    /chats
+        /[chatID]
+            /images
+                a list of all conversation images in jpg format
+
+Googel Cloud functions:
+
+saveProfilePicture:
+    input: imageUrl, memberID
+    output: success, url
+    description: saves the profile picture to the user's storage
+
+deleteProfilePicture:
+    input: memberID
+    output: success
+    description: deletes the profile picture from the user's storage
+
+saveConversationImage:
+    input: imageUrl, chatID, description
+    output: success, url, description
+    description: saves the conversation image to the user's storage
+
+deleteConversationImage:
+    input: chatID, fileName
+    output: success
+    description: deletes the conversation image from the user's storage

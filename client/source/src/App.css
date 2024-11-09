@@ -1,0 +1,1250 @@
+:root {
+  --background-dark: #2B2A2A;
+  --background-medium: #3F3F3F;
+  --background-light: #4F4F4F;
+  --text-light: #ffffff;
+  --text-medium: #e6e6e6;
+  --text-dark: #999999;
+  --gradient-start: rgb(128, 123, 214);
+  --gradient-end: rgb(32, 169, 197);
+  --shadow-color: rgba(0,0,0,0.5);
+  --delete-button-bg: rgba(49, 39, 39, 0.524);
+  --delete-button-hover: rgba(255, 0, 0, 0.9);
+  --input-bg: rgba(0, 0, 0, 0.2);
+  --disabled-button: #868686;
+  --selected-shadow: rgb(145, 211, 229);
+  --special-icon: #8BBEFF;
+  --delete-gradient-start: rgb(179, 30, 30);
+  --delete-gradient-end: rgb(218, 29, 8);
+}
+
+/* General Styles */
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--background-dark);
+}
+
+body {
+  overflow: auto;
+  overscroll-behavior: none;
+}
+
+label {
+  color: var(--text-light);
+}
+
+/* App Layout */
+.App {
+  background-color: var(--background-dark);
+  height: 100vh;
+}
+
+.FlexBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-dark);
+  height: 100%;
+  gap: 2rem;
+  padding: 2rem;
+  padding-top: calc(2rem + 60px);
+  box-sizing: border-box;
+}
+
+/* Navigation Bar */
+.NavBar {
+  background-color: var(--background-dark);
+  padding: 0 20px;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 0 8px 0 var(--shadow-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  z-index: 1000; /* Ensure navbar is always on top */
+}
+
+.logo-link {
+  text-decoration: none;
+}
+
+.logo {
+  color: var(--text-light);
+  margin: 0;
+  font-size: 24px;
+  background: -webkit-linear-gradient(var(--gradient-start), var(--gradient-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-item {
+  color: var(--text-light);
+  text-decoration: none;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+}
+
+/* Chat Box */
+.ChatBox {
+  flex: 2;
+  background-color: var(--background-medium);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 0 8px 0 var(--shadow-color);
+  display: flex;
+  flex-direction: column;
+  height: calc(90vh - 60px);
+  max-height: 800px;
+}
+
+.Chats {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  scroll-behavior: smooth;
+}
+
+.Chats h1 {
+  font-size: 20px;
+  color: var(--text-light);
+}
+
+/* Individual Chat Styles */
+.Chat {
+  padding: 1%;
+  margin-bottom: 15px;
+}
+
+.ChatHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.ChatAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ChatAvatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ChatName {
+  font-size: 16px;
+  color: var(--text-light);
+  margin: 0;
+  background: -webkit-linear-gradient(var(--gradient-start), var(--gradient-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ChatContent {
+  background-color: var(--input-bg);
+  border-radius: 10px;
+  padding: 10px;
+  position: relative;
+}
+
+.ChatContent p {
+  color: var(--text-light);
+  margin: 0;
+}
+
+/* Delete Button Styles */
+.DeleteButton {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background-color: var(--delete-button-bg);
+  color: var(--text-light);
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+}
+
+.DeleteButtonMembers {
+  background-color: var(--delete-button-bg);
+  color: var(--text-light);
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+}
+
+.Chat:hover .DeleteButton {
+  opacity: 1;
+}
+
+.DeleteButton:hover, .DeleteButtonMembers:hover {
+  background-color: var(--delete-button-hover);
+}
+
+/* Input Area */
+.InputArea {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.ChatInput {
+  flex: 1;
+  height: 100%;
+  border-radius: 6px;
+  outline: none;
+  background-color: var(--input-bg);
+  border: none;
+  color: var(--text-light);
+  font-size: 13px;
+  resize: none;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.ChatInputButton,
+.ChatInputButtonDisabled {
+  height: 100%;
+  width: 80px;
+  color: var(--text-light);
+  border: none;
+  font-size: 16px;
+  border-radius: 6px;
+  margin-left: 10px;
+  box-sizing: border-box;
+  font-weight: bold;
+}
+
+.ChatInputButton {
+  background: linear-gradient(357deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+  cursor: pointer;
+  box-shadow: 0 0 5px 0 var(--shadow-color);
+}
+
+.SendIcon {
+  font-size: 23px;
+}
+
+.ChatInputButtonDisabled {
+  background: var(--disabled-button);
+  cursor: default;
+}
+
+/* Chatbox + Members */
+.ChatBox,
+.Members {
+  box-sizing: border-box;
+  height: calc(90vh - 60px);
+  max-height: 800px;
+  margin: 0;
+}
+
+/* Members Section */
+.Members {
+  flex: 1;
+  background-color: var(--background-medium);
+  border-radius: 1.5rem;
+  overflow: auto;
+  padding: 2rem;
+  box-shadow: 0 0 8px 0 var(--shadow-color);
+}
+
+.Members h2 {
+  font-size: 14px;
+  padding: 10px;
+  color: var(--text-medium);
+  margin: 0;
+  text-align: center;
+}
+
+.Title {
+  margin: 0 0 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 8px 0 var(--shadow-color);
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  background-color: var(--input-bg);
+}
+
+.Members::-webkit-scrollbar {
+  display: none;
+}
+
+.Member,
+.SelectedMember,
+.MemberBeingEdited {
+  margin: 0 0 1rem;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.Member,
+.SelectedMember {
+  margin: 0 0 1rem;
+  border-radius: 10px;
+  background: linear-gradient(357deg, rgb(79, 79, 79) 0%, rgb(63, 63, 63) 100%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.Member:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px 0 var(--shadow-color);
+  transition: all 0.3s ease;
+}
+
+.Member[data-is-user="true"]{
+  background: linear-gradient(357deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+}
+
+.SelectedMember {
+  box-shadow: 0 0 0 2px var(--background-medium), 
+              0 0 0 4px var(--gradient-start);
+  transition: box-shadow 0.7s ease;
+}
+
+.MemberBeingEdited {
+  border: 2px solid transparent;
+  background-image: linear-gradient(var(--background-medium), var(--background-medium)), 
+                    linear-gradient(to bottom, var(--gradient-start), var(--gradient-end));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  background-size: 100% 100%, 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.MemberAvatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.MemberAvatarEdited {
+  width: 140px;
+  height: 140px;
+  overflow: hidden;
+  margin-right: 10px;
+  border: var(--text-light);
+}
+
+.MemberAvatarEdited img,
+.MemberAvatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.MemberAvatarEdited img {
+  box-sizing: border-box;
+}
+
+.MemberHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.MemberHeader .Icon {
+  margin-left: 10px;
+}
+
+.Member h1,
+.Title h1,
+.SelectedMember h1 {
+  font-size: 18px;
+  color: var(--text-light);
+  margin: 0;
+  flex-grow: 1;
+}
+
+.Icon {
+  font-size: 24px;
+  color: var(--text-light);
+  padding-right: 2%;
+  cursor: pointer;
+}
+
+.pencil-icon {
+  font-size: 18px;
+}
+
+.SpecialIcon {
+  font-size: 24px;
+  color: var(--special-icon);
+  padding-right: 2%;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.Member h2,
+.Title h2,
+.SelectedMember h2,
+.MemberBeingEdited h2 {
+  font-size: 18px;
+  color: var(--text-light);
+  cursor: pointer;
+  margin: 0;
+  margin-top: 5px;
+}
+
+.selectedMember h3,
+.MemberBeingEdited h3 {
+  font-size: 16px;
+  color: var(--text-light);
+  margin: 10px 0 0 0;
+  padding: 0;
+  text-shadow: none;
+}
+
+.MemberBeingEdited .MemberAvatar {
+  margin-bottom: 10px;
+}
+
+.NameInput,
+.PersonalityInput {
+  width: calc(100% - 20px);
+  margin: 10px 0;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--input-bg);
+  color: var(--text-light);
+}
+
+.NameInput {
+  height: 30px;
+}
+
+.PersonalityInput {
+  height: 80px;
+  resize: vertical;
+}
+
+.CreateMember {
+  border: solid var(--text-light);
+  border-radius: 10px;
+  margin: 0 0 1rem;
+  cursor: pointer;
+}
+
+.CreateMember h1 {
+  font-size: 18px;
+  padding: 15px;
+  color: var(--text-light);
+  margin: 0;
+  text-align: center;
+}
+
+.MembersLoading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Placeholder Styles */
+::placeholder {
+  color: rgb(227, 227, 227);
+}
+
+/* CardComponent Styles */
+.component {
+  width: 180px;
+  height: 180px;
+  border-radius: 20px;
+  padding: 15px;
+  color: var(--text-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.component:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.add {
+  background-color: var(--background-medium);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+.add:hover {
+  background-color: var(--background-light);
+}
+
+.add::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle 200px at var(--x) var(--y),
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.add:hover::before {
+  opacity: 1;
+}
+
+.add-icon {
+  font-size: 40px;
+  color: var(--text-dark);
+  transition: color 0.3s ease;
+}
+
+.add:hover .add-icon {
+  color: var(--text-light);
+}
+
+.purple {
+  background: linear-gradient(357deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.members {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+  position: relative;
+  z-index: 10;
+  text-shadow: 1px 1px 2px var(--shadow-color);
+}
+
+.member-count {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.avatars {
+  position: relative;
+  width: 70px;
+  height: 70px;
+}
+
+.avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px 0 var(--shadow-color);
+  background-color: var(--background-dark);
+  position: absolute;
+  top: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.avatar:nth-child(1) { left: 0; z-index: 3; opacity: 1; }
+.avatar:nth-child(2) { left: 40px; z-index: 2; opacity: 0.6; }
+.avatar:nth-child(3) { left: 80px; z-index: 1; opacity: 0.2; }
+
+/* Home Page Specific Styles */
+.home-page {
+  background-color: var(--background-dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-content {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 60px;
+}
+
+.home-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+/* MemberGrid and Member card */
+.member-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.member-card-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.member-card-name {
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  color: var(--text-light);
+}
+
+.add-member-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background-dark);
+  cursor: pointer;
+  transition: 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.member-card-image:hover {
+  background-color: var(--text-dark);
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.add-member-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.add-member-button::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.add-member-button:hover::before {
+  opacity: 1;
+}
+
+.plus-icon {
+  font-size: 40px;
+  color: var(--text-light);
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+}
+
+/* Adjust existing styles */
+.home {
+  background-color: transparent;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-medium);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-dark);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-dark);
+}
+
+/* Settings Styles */
+.SettingsFlexBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 60px);
+  background-color: var(--background-dark);
+}
+
+.SettingsBox {
+  width: 50%;
+  max-width: 600px;
+  background-color: var(--background-medium);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 8px 0 var(--shadow-color);
+  color: var(--text-light);
+}
+
+.SettingsBox h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.SettingsContent {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.SettingItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.SettingItem label {
+  font-size: 16px;
+}
+
+.SettingItem input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+}
+
+.SettingItem input[type="text"] {
+  width: 60%;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--input-bg);
+  color: var(--text-light);
+}
+
+/* Toggle */
+
+.toggle-container {
+  display: flex;
+  background-color: var(--background-dark);
+  border-radius: 8px;
+  overflow: hidden;
+  width: 200px;
+}
+
+.toggle-option {
+  flex: 1;
+  padding: 10px 20px;
+  border: none;
+  background-color: transparent;
+  color: var(--text-light);
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-option.active {
+  background: linear-gradient(357deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+}
+
+.toggle-option:focus {
+  outline: none;
+}
+
+.toggle-label {
+  display: block;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.toggle-container {
+  margin-bottom: 10px;
+}
+
+.AIToggle {
+  display: flex;
+  align-items: center;
+}
+
+.AIToggle h3 {
+  font-size: 14px;
+  margin: 0;
+}
+
+.AIToggle input[type="checkbox"] {
+  margin-right: 10px;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  background-color: var(--background-dark);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.AIToggle input[type="checkbox"]:checked {
+  background: linear-gradient(357deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+}
+
+/* Delete Confirmation */
+.delete-confirmation {
+  margin-top: 1px;
+  padding: 5px;
+  background-color: var(--background-medium);
+  border-radius: 4px;
+  color: var(--text-medium);
+}
+
+.delete-confirmation p {
+  margin-bottom: 10px;
+}
+
+.delete-confirmation button {
+  margin-right: 10px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cancel-button {
+  background-color: var(--background-medium);
+  color: var(--text-light);
+}
+
+.confirm-button {
+  background: linear-gradient(357deg, var(--delete-gradient-start) 0%, var(--delete-gradient-end) 100%);
+  color: var(--text-light);
+}
+
+.Action-text {
+  font-weight: 505;
+}
+
+/* Image Content Styles */
+.ImageContent {
+  position: relative;
+  margin: 10px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  display: inline-block; /* Prevent expanding to full width */
+  padding: 5px; /* Add padding for the gradient border */
+  background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
+}
+
+.ImageContent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  margin: -3px; /* Negative margin to cover the padding */
+  background: inherit;
+  filter: blur(5px);
+}
+
+.ImageContent img {
+  display: block;
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  border-radius: 5px; /* Slightly smaller radius for inner image */
+}
+
+/* Delete and Refresh Button Styles */
+.DeleteButton,
+.RefreshButton {
+  position: absolute;
+  bottom: 5px;
+  background-color: var(--delete-button-bg);
+  color: var(--text-light);
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+}
+
+.DeleteButton {
+  right: 5px;
+}
+
+.RefreshButton {
+  right: 40px;
+}
+
+.Chat:hover .DeleteButton,
+.Chat:hover .RefreshButton,
+.ImageContent:hover .DeleteButton,
+.ImageContent:hover .RefreshButton {
+  opacity: 1;
+}
+
+.DeleteButton:hover {
+  background-color: var(--delete-button-hover);
+}
+
+.RefreshButton:hover {
+  background-color: var(--gradient-end);
+}
+
+.ImageContent .DeleteButton,
+.ImageContent .RefreshButton {
+  top: 10px;
+  bottom: auto;
+}
+
+.ImageContent .DeleteButton {
+  left: 10px;
+  right: auto;
+}
+
+.ImageContent .RefreshButton {
+  left: 50px;
+  right: auto;
+}
+
+.SetAsUserButton {
+  background: #4a4a4a;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background 0.3s ease;
+  background-size: 200% auto;
+  font-weight: bold;
+}
+
+.DoneButton {
+  background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: opacity 0.3s ease;
+  background-size: 200% auto;
+  font-weight: bold;
+  opacity: 0.6;
+}
+
+.DoneButton:hover {
+  opacity: 1;
+}
+
+.SetAsUserButton:hover {
+  background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+}
+
+.SetAsUserToggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.SetAsUserToggle .SetAsUserButton {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.SetAsUserToggle .DeleteButtonMembers {
+  flex-shrink: 0;
+}
+
+/*landing page*/
+.lp-container {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 60px);
+  width: 100%;
+  max-width: 100%; /* Changed from calc(100vw - 40px) */
+  margin: 0 auto;
+  background-color: #2B2A2A;
+  color: white;
+  padding: 2rem;
+  padding-top: calc(2rem + 60px);
+  box-sizing: border-box;
+}
+
+.lp-content {
+  display: flex;
+  flex-direction: row; /* Changed from column to row */
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  gap: 2rem;
+  min-height: calc(90vh - 60px);
+}
+
+.lp-left-module {
+  flex: 1;
+  background: linear-gradient(357deg, rgb(79, 79, 79) 0%, rgb(63, 63, 63) 100%);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.lp-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  background: linear-gradient(to right, #807BD6, #20A9C5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.lp-feature-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.lp-feature-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.lp-arrow-icon {
+  color: #20A9C5;
+  margin-right: 0.5rem;
+}
+
+.lp-right-module {
+  flex: 2;
+  background-color: #2B2A2A;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 2px solid #807BD6;
+}
+
+.lp-image-placeholder {
+  flex-grow: 1;
+  background-color: var(--background-dark);
+  border-radius: 0.75rem;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  max-height: 80vh;
+}
+
+.lp-image-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.lp-sign-up-button {
+  background: linear-gradient(to right, #807BD6, #20A9C5);
+  color: white;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  font-size: 1.2rem;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  opacity: 0.7;
+}
+
+.lp-sign-up-button:hover {
+  opacity: 1;
+}
+
+
+/* Mobile responsiveness for Landing Page */
+@media (max-width: 768px) {
+  .lp-container {
+    padding: 1rem;
+    padding-top: calc(1rem + 60px);
+  }
+
+  .lp-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .lp-left-module,
+  .lp-right-module {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .lp-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .lp-feature-list li {
+    font-size: 0.9rem;
+  }
+
+  .lp-image-placeholder {
+    max-height: 50vh;
+  }
+
+  .lp-sign-up-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* Additional adjustments for very small screens */
+@media (max-width: 480px) {
+  .lp-title {
+    font-size: 1.5rem;
+  }
+
+  .lp-feature-list li {
+    font-size: 0.8rem;
+  }
+
+  .lp-sign-up-button {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobile styles for Chat page */
+@media (max-width: 768px) {
+  .App {
+    padding-top: 60px; /* Account for fixed NavBar */
+  }
+
+  .FlexBox {
+    flex-direction: column;
+  }
+
+  .ChatBox,
+  .Members {
+    width: 100%;
+    height: calc(100vh - 60px); /* Account for NavBar */
+    max-height: none;
+    border-radius: 0;
+  }
+
+  .nav-toggle-btn {
+    background: var(--background-dark);
+    color: var(--text-light);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+
+  
+  .Chats {
+    height: calc(100vh - 120px); /* Account for NavBar and input area */
+  }
+
+  .InputArea {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background: var(--background-medium);
+  }
+}
+
+@media (max-width: 768px) {
+  .InputArea .ChatInput,
+  .Members .NameInput,
+  .Members .PersonalityInput {
+    font-size: 16px; /* Adjust the font size to prevent zooming */
+  }
+}

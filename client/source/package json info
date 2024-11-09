@@ -1,0 +1,2 @@
+    "start": "node server.js" - this is the command to start the server for gcloud production
+    "start": "react-scripts start" - this is the command to start the react app for development
