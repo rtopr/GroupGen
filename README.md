@@ -2,6 +2,10 @@
 
 GroupGen is an innovative application that allows users to create and interact with AI-powered group conversations. Imagine chatting with anyone you can dream up! Users can create unique members with customized personalities, generate their profile pictures using AI, and engage in dynamic conversations. The application leverages advanced AI models to generate text responses and images based on the conversation history.
 
+## URL
+
+https://groupgen-39162.uc.r.appspot.com/
+
 ## Features
 
 - **Create Unique Members**: Customize members with names and personalities.
