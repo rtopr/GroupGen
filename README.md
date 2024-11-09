@@ -51,7 +51,7 @@ npm install
 
 ### Set Up Firebase Configuration
 
-Replace the placeholders with your Firebase project's configuration in `config/firebase-config.js`:
+Create `config/firebase-config.js` with your Firebase project's configuration:
 
 ```javascript
 // config/firebase-config.js
