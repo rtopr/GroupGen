@@ -86,7 +86,7 @@ CORS_ORIGIN=https://your-app-url.com
 
 #### Frontend
 
-Create `client/source/app.yaml` with your Firebase environment variables:
+Create `client/source/app.yaml` with your environment variables:
 
 ```yaml
 # client/source/app.yaml
