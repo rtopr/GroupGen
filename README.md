@@ -86,7 +86,7 @@ CORS_ORIGIN=https://your-app-url.com
 
 #### Frontend
 
-Update `client/source/app.yaml` with your Firebase environment variables:
+Create `client/source/app.yaml` with your Firebase environment variables:
 
 ```yaml
 # client/source/app.yaml
@@ -103,6 +103,14 @@ env_variables:
   REACT_APP_FIREBASE_MEASUREMENT_ID: "YOUR_MEASUREMENT_ID"
   REACT_APP_API_URL: "https://your-app-url.com"
   REACT_APP_SOCKET_URL: "wss://your-app-url.com"
+handlers:
+  - url: /(.*\.(json|ico|js|css|png|jpg|gif|svg|woff|woff2|ttf|eot))$
+    static_files: build/\1
+    upload: build/.*\.(json|ico|js|css|png|jpg|gif|svg|woff|woff2|ttf|eot)$
+  - url: /.*
+    static_files: build/index.html
+    upload: build/index.html
+
 ```
 
 ### Build the Frontend
