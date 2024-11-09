@@ -5,7 +5,7 @@ import previewImage from '../imgs/Preview.png'
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { doc, getDoc, setDoc, collection, getDocs, getFirestore } from 'firebase/firestore';
 import { v4 as uuidv4 } from 'uuid';
-
+import { FaGithub } from 'react-icons/fa';
 
 export const LandingPage = ({auth, firebaseApp}) => {
     const signInWithGoogle = async () => {
@@ -76,6 +76,10 @@ export const LandingPage = ({auth, firebaseApp}) => {
                   <li>
                     <span className="lp-arrow-icon">➔</span>
                     Completely free!
+                  </li>
+                  <li>
+                    <span className="lp-arrow-icon">➔</span>
+                    Fully open source <a href="https://github.com/rtopr/GroupGen" target="_blank" rel="noopener noreferrer"><FaGithub style={{verticalAlign: 'middle', marginLeft: '5px', color: 'white'}}/></a>
                   </li>
                 </ul>
                 <button className="lp-sign-up-button" onClick={signInWithGoogle}>
