@@ -222,11 +222,6 @@ users
               └── personality
 ```
 
-### Firebase Rules
-
-- **Firestore Rules** (firestore.rules): Set up rules to protect user data and define read/write permissions.
-- **Storage Rules** (storage.rules): Define permissions for accessing Cloud Storage.
-
 ### Cloud Functions
 
 The application uses Firebase Cloud Functions to handle storage operations.
