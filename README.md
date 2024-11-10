@@ -153,7 +153,7 @@ groupgen/
 │       │   └── setupTests.js             # Test configuration
 │       ├── package.json                  # Frontend dependencies
 │       ├── app.yaml                      # GCP App Engine config
-│       └── README.md                     # Frontend documentation
+│       └── README.md                     
 ├── nodejsAi/
 │   ├── server.js                         # Backend server
 │   ├── package.json                      # Backend dependencies
