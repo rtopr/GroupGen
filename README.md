@@ -29,7 +29,7 @@ https://groupgen-39162.uc.r.appspot.com/
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/groupgen.git
+git clone https://github.com/rtopr/groupgen.git
 cd groupgen
 ```
 
@@ -299,14 +299,6 @@ Alternatively, you can deploy the frontend using Firebase Hosting.
 
 firebase deploy --only hosting
 ```
-
-## Contributing
-
-1. Fork the repository.
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`).
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
-4. Push to the branch (`git push origin feature/AmazingFeature`).
-5. Open a Pull Request.
 
 ## License
 
